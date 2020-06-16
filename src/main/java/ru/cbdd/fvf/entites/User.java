@@ -1,4 +1,4 @@
-package ru.cbdd.fvf.main;
+package ru.cbdd.fvf.entites;
 
 import javax.persistence.*;
 import java.util.HashSet;

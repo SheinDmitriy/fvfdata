@@ -18,6 +18,7 @@ button:focus {
 }
 .container{
  width: 1024px;
+    padding: 25px;
 }
 .button-row{
     display: flex;
@@ -46,4 +47,11 @@ button.active {
 }
 .h2-index{
     text-align: center;
+}
+.on_main{
+    padding: 0;
+    margin: 0;
+    width: 150px;
+    height: 50px;
+    font-size: 24px;
 }

@@ -1,6 +1,6 @@
 package ru.cbdd.fvf.security;
 
-import ru.cbdd.fvf.main.UserRepository;
+import ru.cbdd.fvf.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
