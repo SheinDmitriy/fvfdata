@@ -1,4 +1,4 @@
-package ru.cbdd.fvf.security;
+package ru.cbdd.fvf.config;
 
 import ru.cbdd.fvf.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
