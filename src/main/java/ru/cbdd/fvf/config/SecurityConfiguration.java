@@ -1,5 +1,6 @@
 package ru.cbdd.fvf.config;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import ru.cbdd.fvf.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,25 +13,60 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import ru.cbdd.fvf.service.UserService;
 
+@Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
-public class SecurityConfiguration {
+@EnableGlobalMethodSecurity(securedEnabled = true)
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
+    private UserService userService;
+    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
-    @Bean
-    public UserDetailsService userDetailsService(UserRepository userRepository){
-        return new UserAuthService(userRepository);
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     @Autowired
-    public void authConfigure(AuthenticationManagerBuilder auth,
-                              UserDetailsService userDetailsService,
-                              PasswordEncoder passwordEncoder)  {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userDetailsService);
-        provider.setPasswordEncoder(passwordEncoder);
-        auth.authenticationProvider(provider);
+    public void setCustomAuthenticationSuccessHandler(CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler) {
+        this.customAuthenticationSuccessHandler = customAuthenticationSuccessHandler;
     }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/register/**").permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/authenticateTheUser")
+                .successHandler(customAuthenticationSuccessHandler)
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/index")
+                .permitAll();
+    }
+
+//    @Bean
+//    public UserDetailsService userDetailsService(UserRepository userRepository){
+//        return new UserAuthService(userRepository);
+//    }
+//
+//    @Autowired
+//    public void authConfigure(AuthenticationManagerBuilder auth,
+//                              UserDetailsService userDetailsService,
+//                              PasswordEncoder passwordEncoder)  {
+//        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+//        provider.setUserDetailsService(userDetailsService);
+//        provider.setPasswordEncoder(passwordEncoder);
+//        auth.authenticationProvider(provider);
+//    }
 
 //    @Configuration
 //    @Order(1)
@@ -51,24 +87,38 @@ public class SecurityConfiguration {
 //        }
 //    }
 
-    @Configuration
-    public static class UiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
-
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            http
-                    .authorizeRequests()
-                    .antMatchers("/**").permitAll();
+//    @Configuration
+//    public static class UiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
+//        private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+//
+//        @Override
+//        protected void configure(HttpSecurity http) throws Exception {
+//            http
+//                    .authorizeRequests()
+//                    .antMatchers("/**").permitAll()
 //                    .and()
 //                    .formLogin()
-//                    .loginPage("/user/login_m")
-//                    .loginProcessingUrl("/app/product")
-//                    .defaultSuccessUrl("/product")
+//                    .loginPage("/login")
+//                    .loginProcessingUrl("/authenticateTheUser")
+//                    .successHandler(customAuthenticationSuccessHandler)
 //                    .permitAll()
 //                    .and()
 //                    .logout()
-//                    .permitAll()
-//                    .logoutSuccessUrl("/product");
-        }
+//                    .logoutSuccessUrl("/index")
+//                    .permitAll();
+//        }
+//    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+        auth.setUserDetailsService(userService);
+        auth.setPasswordEncoder(passwordEncoder());
+        return auth;
     }
 }

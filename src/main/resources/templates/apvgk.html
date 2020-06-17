@@ -8,8 +8,12 @@
 </head>
 <body>
 
+
 <div class="container">
+    <div th:replace="~{navigation :: navi}"/>
+
     <h2 class="h2-index">АПВГК</h2>
+    <form th:action="@{/index}"> <button  class="button on_main">На главную</button></form>
 
 </div>
 

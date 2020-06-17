@@ -4,7 +4,7 @@ body{
     display: flex;
     justify-content: center;
 }
-button {
+.button-index {
     display: inline-block;
     margin: 0 10px 0 0;
     padding: 15px 45px;
@@ -15,7 +15,7 @@ button {
     box-shadow: none;
     border-radius: 0;
 }
-button:focus {
+.button-index:focus {
     outline: none
 }
 .container{
@@ -37,13 +37,13 @@ button:focus {
     width: 300px;
     height: 150px;
 }
-button:hover,
-button.hover {
+.button-index:hover,
+.button-index.hover {
     background-color: #346392;
     text-shadow: -1px 1px #27496d;
 }
-button:active,
-button.active {
+.button-index:active,
+.button-index.active {
     background-color: #27496d;
     text-shadow: -1px 1px #193047;
 }
