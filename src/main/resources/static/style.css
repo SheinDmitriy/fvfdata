@@ -4,6 +4,9 @@ body{
     display: flex;
     justify-content: center;
 }
+ul{
+    list-style-type: none;
+}
 .button-index {
     display: inline-block;
     margin: 0 10px 0 0;
@@ -56,4 +59,25 @@ body{
     width: 150px;
     height: 50px;
     font-size: 24px;
+}
+.button-login{
+    color: #fff;
+    background-color: #ff413c;
+    /*text-shadow: -1px 1px #ff413c;*/
+    border: none;
+    width: 60px;
+    height: 36px;
+}
+.button-login:hover,
+.button-login.hover {
+    background-color: #92464a;
+    text-shadow: -1px 1px #6d292c;
+}
+.button-login:active,
+.button-login.active {
+    background-color: #6d353b;
+    text-shadow: -1px 1px #47080e;
+}
+.input-login{
+    height: 30px;
 }
