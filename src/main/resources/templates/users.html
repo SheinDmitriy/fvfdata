@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" >
+</head>
+<body>
+
+<div class="container">
+    <div th:replace="~{navigation :: navi}"/>
+
+    <h2 class="h2-index">Пользователи</h2>
+    <form th:action="@{/index}"> <button  class="button on_main">На главную</button></form>
+
+
+</div>
+
+</body>
+</html>

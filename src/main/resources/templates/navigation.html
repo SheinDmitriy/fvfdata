@@ -17,6 +17,9 @@
 
         <div id="navbarNav">
             <ul >
+                <li sec:authorize="hasRole('ROLE_ADMIN')" >
+                   <a th:href="@{/users}">Пользователи</a>
+                </li>
 
                 <li sec:authorize="isAuthenticated()" >
                     <form th:action="@{/logout}" method="POST">
