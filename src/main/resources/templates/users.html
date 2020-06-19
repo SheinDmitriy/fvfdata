@@ -12,6 +12,7 @@
     <div th:replace="~{navigation :: navi}"/>
 
     <h2 class="h2-index">Пользователи</h2>
+    <a th:href="@{/users/form}"  >Create user</a>
     <form th:action="@{/index}"> <button  class="button button-index on_main">На главную</button></form>
 
     <div style="display: flex; width: 20%; justify-content: space-around; margin-left: auto; margin-right: auto">
@@ -23,7 +24,7 @@
 
         <div  >
             <div><h4>Username</h4></div>
-            <div  th:unless="${users.isEmpty()}" th:each="user : ${users}">   <a th:text="${user.username}" th:href="@{/users/{id}(id = ${user.id})}" style="margin-bottom: 7px"></a></div>
+            <div  th:unless="${users.isEmpty()}" th:each="user : ${users}" style="margin-bottom: 7px">   <a th:text="${user.username}" th:href="@{/users/{id}(id = ${user.id})}" ></a></div>
 
         </div>
 

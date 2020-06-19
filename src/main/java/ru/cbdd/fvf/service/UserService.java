@@ -18,6 +18,7 @@ import ru.cbdd.fvf.repositories.UserRepository;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -50,11 +51,11 @@ public class UserService implements UserDetailsService {
     public boolean save(SystemUser systemUser) {
         User user = new User();
 
-        if (findByUserName(systemUser.getUserName()) != null) {
+        if (findByUserName(systemUser.getUsername()) != null) {
             return false;
         }
 
-        user.setUsername(systemUser.getUserName());
+        user.setUsername(systemUser.getUsername());
         user.setPassword(passwordEncoder.encode(systemUser.getPassword()));
 
 
@@ -82,4 +83,13 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
+    }
+
+    public SystemUser findByIdSystemUser(Long id) {
+        SystemUser systemUser = new SystemUser();
+        systemUser.setId(userRepository);
+        return userRepository.findById(id);
+    }
 }
