@@ -16,14 +16,14 @@
 
     <div style="display: flex; width: 20%; justify-content: space-around; margin-left: auto; margin-right: auto">
         <div>
-            <div><h5>Id</h5></div>
-            <div th:unless="${users.isEmpty()}" th:each="user : ${users}" th:text="${user.id}"></div>
+            <div><h4>Id</h4></div>
+            <div th:unless="${users.isEmpty()}" th:each="user : ${users}" th:text="${user.id}" style="margin-bottom: 7px"></div>
 
         </div>
 
         <div  >
-            <div><h5>Username</h5></div>
-            <div  th:unless="${users.isEmpty()}" th:each="user : ${users}">   <a th:text="${user.username}" th:href="@{/users/{id}(id = ${user.id})}">Username</a></div>
+            <div><h4>Username</h4></div>
+            <div  th:unless="${users.isEmpty()}" th:each="user : ${users}">   <a th:text="${user.username}" th:href="@{/users/{id}(id = ${user.id})}" style="margin-bottom: 7px"></a></div>
 
         </div>
 
