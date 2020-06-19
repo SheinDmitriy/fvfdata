@@ -81,3 +81,27 @@ ul{
 .input-login{
     height: 30px;
 }
+.button-a{
+    color: #fff;
+    background-color: #6496c8;
+    text-shadow: -1px 1px #417cb8;
+    border: none;
+    text-decoration: none;
+}
+.button-a:hover,
+.button-a.hover {
+    background-color: #346392;
+    text-shadow: -1px 1px #27496d;
+}
+.button-a:active,
+.button-a.active {
+    background-color: #27496d;
+    text-shadow: -1px 1px #193047;
+}
+.button-a-div{
+    width: 110px;
+    height: 36px;
+    text-align: center;
+    margin-right: 15px;
+    line-height: 36px;
+}
