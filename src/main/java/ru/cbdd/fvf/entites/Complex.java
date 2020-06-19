@@ -6,8 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "complex")
-public class complex {
+@Table(name = "Complex")
+public class Complex {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +23,10 @@ public class complex {
     @Column(name = "ip_address", unique = true)
     private String ip_address;
 
-    public complex() {
+    public Complex() {
     }
 
-    public complex(String series_number, String complex_name, String ip_address) {
+    public Complex(String series_number, String complex_name, String ip_address) {
         this.series_number = series_number;
         this.complex_name = complex_name;
         this.ip_address = ip_address;
