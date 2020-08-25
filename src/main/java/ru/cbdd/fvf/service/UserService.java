@@ -87,9 +87,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id);
     }
 
-    public SystemUser findByIdSystemUser(Long id) {
-        SystemUser systemUser = new SystemUser();
-        systemUser.setId(userRepository);
+    public Optional<User> findByIdSystemUser(Long id) {
         return userRepository.findById(id);
     }
 }
