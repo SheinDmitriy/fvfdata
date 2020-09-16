@@ -4,7 +4,7 @@ package ru.cbdd.fvf.entites;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.cbdd.fvf.validation.FieldMatch;
+//import ru.cbdd.fvf.validation.FieldMatch;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

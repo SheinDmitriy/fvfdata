@@ -52,62 +52,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .permitAll();
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService(UserRepository userRepository){
-//        return new UserAuthService(userRepository);
-//    }
-//
-//    @Autowired
-//    public void authConfigure(AuthenticationManagerBuilder auth,
-//                              UserDetailsService userDetailsService,
-//                              PasswordEncoder passwordEncoder)  {
-//        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-//        provider.setUserDetailsService(userDetailsService);
-//        provider.setPasswordEncoder(passwordEncoder);
-//        auth.authenticationProvider(provider);
-//    }
-
-//    @Configuration
-//    @Order(1)
-//    public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
-//
-//        @Override
-//        protected void configure(HttpSecurity http) throws Exception {
-//           http
-//                   .antMatcher("/api/**")
-//                   .authorizeRequests()
-//                   .anyRequest()
-//                   .hasAnyRole("ADMIN", "GUEST")
-//                   .and()
-//                   .httpBasic(Customizer.withDefaults())
-//                   .csrf().disable()
-//                   .sessionManagement()
-//                   .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//        }
-//    }
-
-//    @Configuration
-//    public static class UiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
-//        private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
-//
-//        @Override
-//        protected void configure(HttpSecurity http) throws Exception {
-//            http
-//                    .authorizeRequests()
-//                    .antMatchers("/**").permitAll()
-//                    .and()
-//                    .formLogin()
-//                    .loginPage("/login")
-//                    .loginProcessingUrl("/authenticateTheUser")
-//                    .successHandler(customAuthenticationSuccessHandler)
-//                    .permitAll()
-//                    .and()
-//                    .logout()
-//                    .logoutSuccessUrl("/index")
-//                    .permitAll();
-//        }
-//    }
-
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
