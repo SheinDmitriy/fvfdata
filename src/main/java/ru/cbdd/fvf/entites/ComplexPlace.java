@@ -1,9 +1,12 @@
 package ru.cbdd.fvf.entites;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ComplexPlace")
+@Table(name = "complexPlace")
+@Data
 public class ComplexPlace {
 
     @Id
@@ -22,4 +25,9 @@ public class ComplexPlace {
     // Долгота
     @Column(name = "longitude")
     private String longitude;
+
+    // Связь с типом дороги
+    @ManyToOne
+    @JoinColumn(name = "roadType_id")
+    private RoadType roadType;
 }
