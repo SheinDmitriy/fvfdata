@@ -3,6 +3,7 @@ package ru.cbdd.fvf.entites;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "operator")
@@ -16,5 +17,11 @@ public class Operator {
 
     @Column(name = "title")
     private String title;
+
+    @Column(name = "contract")
+    private String contract;
+
+    @Column(name = "date_until")
+    private LocalDateTime dateUntil;
 
 }
