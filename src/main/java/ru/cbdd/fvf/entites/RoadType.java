@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "roadType")
+@Table(name = "road_type")
 @Data
 public class RoadType {
 
@@ -15,6 +15,6 @@ public class RoadType {
     private Long id;
 
     // Тип дороги
-    @Column(name = "roadType")
+    @Column(name = "road_type")
     private String roadType;
 }
