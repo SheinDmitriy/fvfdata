@@ -36,7 +36,7 @@ CREATE TABLE users_roles (
   ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
-DROP TABLE IF EXISTS categories;
+-- DROP TABLE IF EXISTS categories;
 
 -- CREATE TABLE categories (
 --   id	                INT(11) NOT NULL AUTO_INCREMENT,
