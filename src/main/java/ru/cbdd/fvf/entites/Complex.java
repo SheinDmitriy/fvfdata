@@ -3,6 +3,7 @@ package ru.cbdd.fvf.entites;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -23,5 +24,8 @@ public class Complex {
     @ManyToOne
     @JoinColumn(name = "complex_place_id")
     private ComplexPlace complexPlace;
+
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "document")
+    private List<ComplexDocument> documents;
 
 }
