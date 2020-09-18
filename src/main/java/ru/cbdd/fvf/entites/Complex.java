@@ -20,4 +20,8 @@ public class Complex {
     @Column(name = "complex_name", nullable = false)
     private String complex_name;
 
+    @ManyToOne
+    @JoinColumn(name = "complex_place_id")
+    private ComplexPlace complexPlace;
+
 }
