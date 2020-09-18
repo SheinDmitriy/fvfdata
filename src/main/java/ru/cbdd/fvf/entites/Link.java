@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "link")
+@Table(name = "link_type")
 @Data
 public class Link {
     @Id
