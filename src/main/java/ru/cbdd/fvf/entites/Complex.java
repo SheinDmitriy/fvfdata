@@ -25,7 +25,7 @@ public class Complex {
     @JoinColumn(name = "complex_place_id")
     private ComplexPlace complexPlace;
 
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "document")
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "complex", fetch = FetchType.EAGER)
     private List<ComplexDocument> documents;
 
     @ManyToOne
