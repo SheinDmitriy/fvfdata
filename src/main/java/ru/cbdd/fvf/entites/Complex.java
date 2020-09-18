@@ -28,4 +28,8 @@ public class Complex {
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "document")
     private List<ComplexDocument> documents;
 
+    @ManyToOne
+    @JoinColumn(name = "network_id")
+    private Network network;
+
 }
