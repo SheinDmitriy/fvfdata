@@ -12,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.cbdd.fvf.entites.Role;
 import ru.cbdd.fvf.entites.SystemUser;
 import ru.cbdd.fvf.entites.User;
-import ru.cbdd.fvf.repositories.RoleRepository;
-import ru.cbdd.fvf.repositories.UserRepository;
 
 import java.util.Arrays;
 import java.util.Collection;
