@@ -21,4 +21,6 @@ public class Complex extends AbstractEntity {
 
     private List<Offense> offenses;
 
+    private ComplexType complexType;
+
 }
