@@ -1,11 +1,11 @@
-package ru.cbdd.fvf.entites;
+package ru.cbdd.fvf.entitys;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class ComplexPlace {
-
-    private Long id;
+public class ComplexPlace extends AbstractEntity{
 
     // Место утсановки
     private String place;

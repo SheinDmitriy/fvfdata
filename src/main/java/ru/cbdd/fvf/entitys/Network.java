@@ -1,11 +1,11 @@
-package ru.cbdd.fvf.entites;
+package ru.cbdd.fvf.entitys;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class Network {
-
-    private Long id;
+public class Network extends AbstractEntity{
 
     // ip
     private String ipAddress;
@@ -16,7 +16,9 @@ public class Network {
     // Шлюз
     private String gateway;
 
+    // Тип связи
     private Link link;
 
+    // Оператор
     private Operator operator;
 }

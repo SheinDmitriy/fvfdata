@@ -9,9 +9,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.cbdd.fvf.entites.Role;
-import ru.cbdd.fvf.entites.SystemUser;
-import ru.cbdd.fvf.entites.User;
+import ru.cbdd.fvf.entitys.Role;
+import ru.cbdd.fvf.entitys.SystemUser;
+import ru.cbdd.fvf.entitys.User;
 
 import java.util.Arrays;
 import java.util.Collection;

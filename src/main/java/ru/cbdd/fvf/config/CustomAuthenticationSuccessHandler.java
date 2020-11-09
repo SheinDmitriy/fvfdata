@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
-import ru.cbdd.fvf.entites.User;
+import ru.cbdd.fvf.entitys.User;
 import ru.cbdd.fvf.service.UserService;
 
 import javax.servlet.ServletException;
