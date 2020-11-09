@@ -23,4 +23,6 @@ public class Complex extends AbstractEntity {
 
     private ComplexType complexType;
 
+    private Verification verification;
+
 }
