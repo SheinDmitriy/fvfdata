@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS offense;
 
 CREATE TABLE offense (
-  id                    INT(11) NOT NULL AUTO_INCREMENT,
+  id                    bigint NOT NULL AUTO_INCREMENT,
   typeOffense                  VARCHAR(50) DEFAULT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

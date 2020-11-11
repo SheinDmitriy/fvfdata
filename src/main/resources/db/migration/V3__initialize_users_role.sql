@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS users_roles;
 
 CREATE TABLE users_roles (
-  user_id               INT(11) NOT NULL,
-  role_id               INT(11) NOT NULL,
+  user_id               bigint NOT NULL,
+  role_id               bigint NOT NULL,
 
   PRIMARY KEY (user_id,role_id),
 
