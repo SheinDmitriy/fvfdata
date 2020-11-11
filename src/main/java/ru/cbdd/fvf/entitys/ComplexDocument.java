@@ -7,7 +7,5 @@ import lombok.EqualsAndHashCode;
 @Data
 public class ComplexDocument extends AbstractEntity{
 
-    private Complex complex;
-
     private String path;
 }
