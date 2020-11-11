@@ -13,5 +13,5 @@ public class Verification extends AbstractEntity {
 
     private LocalDateTime verificationDate;
 
-    private LocalDateTime toVerificationDate;
+    private LocalDateTime verificationDateUntil;
 }

@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS buh_data;
 
 CREATE TABLE buh_data (
-  id                INT(11) NOT NULL AUTO_INCREMENT,
+  id                bigint NOT NULL AUTO_INCREMENT,
   contract_number   VARCHAR(50) DEFAULT NULL,
   data_start_up     TIMESTAMP,
   inventory_number  VARCHAR(50) DEFAULT NULL,
