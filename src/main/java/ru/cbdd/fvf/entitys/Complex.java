@@ -15,7 +15,7 @@ public class Complex extends AbstractEntity {
 
     private ComplexPlace complexPlace;
 
-    private List<ComplexDocument> documents;
+    private List<Document> documents;
 
     private Network network;
 

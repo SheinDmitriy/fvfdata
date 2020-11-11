@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ComplexDocument extends AbstractEntity{
+public class Document extends AbstractEntity{
 
     private String path;
 }
