@@ -14,11 +14,11 @@ create table complex (
        references complex_place (id),
        constraint FK_COMPLEX_TYPE_ID foreign key (complex_type_id)
        references complex_type (id),
-       constraint FK_COMPLEX_TYPE_ID foreign key (verification_id)
+       constraint FK_VERIFICATION_ID foreign key (verification_id)
        references verification (id),
-       constraint FK_COMPLEX_TYPE_ID foreign key (buh_data_id)
+       constraint FK_BUH_ID foreign key (buh_data_id)
        references buh_data (id),
-       constraint FK_COMPLEX_TYPE_ID foreign key (network_id)
+       constraint FK_NETWORK_ID foreign key (network_id)
        references network (id)
     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
