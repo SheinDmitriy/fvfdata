@@ -17,7 +17,7 @@ public class Network extends AbstractEntity{
     private String gateway;
 
     // Тип связи
-    private Link link;
+    private LinkType linkType;
 
     // Оператор
     private Operator operator;
