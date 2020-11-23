@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.cbdd.fvf.entitys.SystemUser;
 import ru.cbdd.fvf.service.UserService;
-import ru.cbdd.fvf.utils.NotFoundException;
+import ru.cbdd.fvf.exception.NotFoundException;
 
 import javax.validation.Valid;
 
