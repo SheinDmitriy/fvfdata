@@ -7,5 +7,9 @@ import lombok.EqualsAndHashCode;
 @Data
 public class ComplexType extends AbstractEntity {
 
-    private String complexType;
+    private String type;
+
+    private String mark;
+
+    private ComplexStatus status;
 }
