@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.cbdd.fvf.entitys.Role;
 import ru.cbdd.fvf.entitys.SystemUser;
 import ru.cbdd.fvf.entitys.User;
+import ru.cbdd.fvf.interfaces.iproviders.IRoleProvider;
+import ru.cbdd.fvf.interfaces.iproviders.IUserProvider;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,18 +23,18 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
+    private IUserProvider userProvider;
+    private IRoleProvider roleProvider;
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public void setUserProvider(IUserProvider userProvider) {
+        this.userProvider = userProvider;
     }
 
     @Autowired
-    public void setRoleRepository(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
+    public void setRoleProvider(IRoleProvider roleProvider) {
+        this.roleProvider = roleProvider;
     }
 
     @Autowired
@@ -42,7 +44,7 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public User findByUserName(String username) {
-        return userRepository.findOneByUsername(username);
+        return userProvider.findByUsername(username);
     }
 
     @Transactional
@@ -55,22 +57,19 @@ public class UserService implements UserDetailsService {
 
         user.setUsername(systemUser.getUsername());
         user.setPassword(passwordEncoder.encode(systemUser.getPassword()));
-
-
-        user.setRoles(Arrays.asList(roleRepository.findOneByName("ROLE_EMPLOYEE")));
-
-        userRepository.save(user);
+        user.setRoles(Arrays.asList(roleProvider.findOneByName("ROLE_EMPLOYEE")));
+        userProvider.save(user);
         return true;
     }
 
     @Transactional
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userRepository.findOneByUsername(userName);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userProvider.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-                mapRolesToAuthorities(user.getRoles()));
+                mapRolesToAuthorities(roleProvider.findByUserId(user.getId())));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
@@ -78,14 +77,14 @@ public class UserService implements UserDetailsService {
     }
 
     public List<User> findAll() {
-        return userRepository.findAll();
+        return userProvider.findAll();
     }
 
     public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
+        return userProvider.findById(id);
     }
 
     public Optional<User> findByIdSystemUser(Long id) {
-        return userRepository.findById(id);
+        return userProvider.findById(id);
     }
 }

@@ -19,13 +19,13 @@ import javax.sql.DataSource;
 @PropertySource("classpath:application.properties")
 public class DataSourceProvider implements TransactionManagementConfigurer {
 
-    @Value("${spring.datasource.username}")
+    @Value("${datasource.username}")
     private String USER_NAME;
-    @Value("${spring.datasource.password}")
+    @Value("${datasource.password}")
     private String PASSWORD;
-    @Value("${spring.datasource.url}")
+    @Value("${datasource.url}")
     private String DATASOURCE_URL;
-    @Value("${com.mysql.cj.jdbc.Driver}")
+    @Value("${datasource.driver-class-name}")
     private String DRIVER_CLASS_NAME;
 
     //    @Bean

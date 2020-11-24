@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.cbdd.fvf.entitys.SystemUser;
+import ru.cbdd.fvf.service.RoleService;
 import ru.cbdd.fvf.service.UserService;
 import ru.cbdd.fvf.exception.NotFoundException;
 
@@ -18,12 +19,12 @@ import javax.validation.Valid;
 @RequestMapping("/users")
 public class UsersController {
     private final UserService userService;
-    private final RoleRepository roleRepository;
+    private final RoleService roleService;
 
     @Autowired
-    public UsersController(UserService userService, RoleRepository roleRepository) {
+    public UsersController(UserService userService, RoleService roleService) {
         this.userService = userService;
-        this.roleRepository = roleRepository;
+        this.roleService = roleService;
     }
 
     @GetMapping
@@ -34,15 +35,15 @@ public class UsersController {
 
     @GetMapping("/{id}")
     public String editUser(@PathVariable(value = "id") Long id, Model model) {
-        model.addAttribute("user", userService.findByIdSystemUser(id).orElseThrow(NotFoundException::new));
-        model.addAttribute("roles", roleRepository.findAll());
+        model.addAttribute("user", userService.findById(id).orElseThrow(NotFoundException::new));
+        model.addAttribute("roles", roleService.findAll());
         return "user_form";
     }
 
     @GetMapping("/form")
     public String formUser(Model model) {
         model.addAttribute("user", new SystemUser());
-        model.addAttribute("roles", roleRepository.findAll());
+        model.addAttribute("roles", roleService.findAll());
         return "user_form";
     }
 
