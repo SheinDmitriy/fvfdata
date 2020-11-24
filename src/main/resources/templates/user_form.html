@@ -10,26 +10,26 @@
 
 
 <div class="container">
-    <h1>Person</h1>
+    <h1>Пользователи</h1>
 
     <form th:action="@{/users/form}" th:object="${user}" method="post">
         <input th:type="hidden" th:field="*{id}">
-        <p>Username:</p>
+        <p>Логин:</p>
         <p>
             <input type="text" th:field="*{username}">
         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Password don't match</p>
         </p>
 
-        <p>Password:</p>
+        <p>Пароль:</p>
         <p>
             <input type="password" th:field="*{password}">
         <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password don't match</p>
         </p>
 
-        <p>Repeat password:</p>
+        <p>Повторите пароль:</p>
         <p><input type="password" th:field="*{matchingPassword}"></p>
 
-        <p>Roles:</p>
+        <p>Права доступа:</p>
         <p>
             <select multiple  id="roles" th:field="*{roles}" required style="width: 250px">
                 <option th:each="role : ${roles}"
@@ -40,10 +40,8 @@
         </p>
         <div style="display: flex">
 
-        <button type="submit" >Сохранить</button>
-            <a th:href="@{/users}" class="button-a">
-                <div th:text="Отмена" class="button-login button-a-div"> </div>
-            </a>
+        <button type="submit" class="button-login" >Сохранить</button>
+            <a th:href="@{/users}" th:text="Отмена" class="button-a button-a-div"></a>
         </div>
     </form>
 </div>

@@ -14,14 +14,13 @@
 <div  th:fragment="navi">
     <nav >
 
-
         <div id="navbarNav">
             <ul style="display: flex">
                 <li sec:authorize="hasRole('ROLE_ADMIN')" >
+                    <div class="button-a button-a-div">
+                   <a th:href="@{/users}" th:text="Пользователи" class="button-a" >
 
-                   <a th:href="@{/users}" class="button-a">
-                       <div th:text="Пользователи" class="button-a button-a-div"> </div>
-                   </a>
+                   </a></div>
                 </li>
 
                 <li sec:authorize="isAuthenticated()" >
@@ -33,7 +32,7 @@
                     <form  th:action="@{/authenticateTheUser}" method="POST">
                         <div >
                             <input  type="text" placeholder="Логин" name="username" aria-describedby="inputGroup-sizing-sm" class="input-login">
-                            <input  type="text" placeholder="Пароль" name="password" aria-describedby="inputGroup-sizing-sm" class="input-login">
+                            <input  type="password" placeholder="Пароль" name="password" aria-describedby="inputGroup-sizing-sm" class="input-login">
                             <button type="submit" class="button-login">Войти</button>
                         </div>
                     </form>
