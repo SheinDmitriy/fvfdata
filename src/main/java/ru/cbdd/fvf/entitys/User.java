@@ -3,16 +3,27 @@ package ru.cbdd.fvf.entitys;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@EqualsAndHashCode(callSuper = true)
+//@EqualsAndHashCode(callSuper = true)
 @Data
-public class User extends AbstractEntity{
+@Table(name = "users")
+public class User {
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "username")
     private String username;
 
+    @Column(name = "password")
     private String password;
 
     private List<Role> roles;

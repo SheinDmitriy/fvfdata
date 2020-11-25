@@ -13,10 +13,10 @@
     <h1>Пользователи</h1>
 
     <form th:action="@{/users/form}" th:object="${user}" method="post">
-        <input th:type="hidden" th:field="*{id}">
+        <input th:type="hidden" th:field="*{setId(id)}">
         <p>Логин:</p>
         <p>
-            <input type="text" th:field="*{username}">
+            <input type="text" th:field="*{setUsername(username)}">
         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Password don't match</p>
         </p>
 
