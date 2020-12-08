@@ -49,14 +49,17 @@ public class UsersController {
     }
 
     @PostMapping("/form")
-    public String newUser(@Valid SystemUser systemUser, BindingResult result) {
-//        if (result.hasErrors()) {
-//            return "user_form";
-//        }
-//        if (!systemUser.getPassword().equals(systemUser.getMatchingPassword())) {
+    public String newUser(@Valid SystemUser systemUser, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "user_form";
+        }
+        if (!systemUser.getPassword().equals(systemUser.getMatchingPassword())) {
 //            result.rejectValue("password", "", "Password not matching");
-//            return "user_form";
-//        }
+            model.addAttribute("error", "Password not matching");
+            model.addAttribute("user", systemUser);
+            model.addAttribute("roles", roleService.findAll());
+            return "user_form";
+        }
 
         userService.save(systemUser);
         return "redirect:/users";

@@ -106,3 +106,7 @@ ul{
     margin-right: 15px;
     line-height: 36px;
 }
+.error_text{
+    color: red;
+    font-size: 14px;
+}
