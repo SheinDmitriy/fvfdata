@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.cbdd.fvf.entitys.Role;
 import ru.cbdd.fvf.entitys.SystemUser;
 import ru.cbdd.fvf.service.RoleService;
 import ru.cbdd.fvf.service.UserService;
@@ -36,7 +37,7 @@ public class UsersController {
     @GetMapping("/{id}")
     public String editUser(@PathVariable(value = "id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id).orElseThrow(NotFoundException::new));
-        model.addAttribute("roles", roleService.findAll());
+        model.addAttribute("roles", roleService.findByUserId(id));
         return "user_form";
     }
 
@@ -48,16 +49,16 @@ public class UsersController {
     }
 
     @PostMapping("/form")
-    public String newUser(@Valid SystemUser user, BindingResult result) {
-        if (result.hasErrors()) {
-            return "user_form";
-        }
-        if (!user.getPassword().equals(user.getMatchingPassword())) {
-            result.rejectValue("password", "", "Password not matching");
-            return "user_form";
-        }
+    public String newUser(@Valid SystemUser systemUser, BindingResult result) {
+//        if (result.hasErrors()) {
+//            return "user_form";
+//        }
+//        if (!systemUser.getPassword().equals(systemUser.getMatchingPassword())) {
+//            result.rejectValue("password", "", "Password not matching");
+//            return "user_form";
+//        }
 
-        userService.save(user);
+        userService.save(systemUser);
         return "redirect:/users";
     }
 }

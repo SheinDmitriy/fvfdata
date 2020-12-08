@@ -13,10 +13,10 @@
     <h1>Пользователи</h1>
 
     <form th:action="@{/users/form}" th:object="${user}" method="post">
-        <input th:type="hidden" th:field="*{setId(id)}">
+        <!--<input th:type="hidden" th:field="*{id}">-->
         <p>Логин:</p>
         <p>
-            <input type="text" th:field="*{setUsername(username)}">
+            <input type="text" th:field="*{username}">
         <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Password don't match</p>
         </p>
 
@@ -31,16 +31,24 @@
 
         <p>Права доступа:</p>
         <p>
-            <select multiple  id="roles" th:field="*{roles}" required style="width: 250px">
-                <option th:each="role : ${roles}"
-                        th:text="${role.name}"
-                        th:value="${role.id}"
-                        th:selected="${user.roles?.contains(role)}"></option>
-            </select>
+        <ul>
+            <li th:each="role : ${roles}">
+                <input type="checkbox" th:value="${role.name}" th:field="*{roles}" th:text="${role.name}"/>
+                <!--<input type="checkbox" th:id="${{role}}" th:value="${{role.id}}" th:field="*{roles}"    />-->
+                <!--<span th:text="${role.name}"></span>-->
+            </li>
+        </ul>
+            <!--<select multiple  id="roles" th:field="*{roles}" required style="width: 250px">-->
+                <!--<option th:each="role : ${roles}"-->
+                        <!--th:text="${role.name}"-->
+                        <!--th:value="${role.id}"-->
+                        <!--th:selected="${user.roles?.}"></option>-->
+            <!--</select>-->
+
         </p>
         <div style="display: flex">
 
-        <button type="submit" class="button-login" >Сохранить</button>
+        <button type="submit" class="button-login" value="Save">Сохранить</button>
             <a th:href="@{/users}" th:text="Отмена" class="button-a button-a-div"></a>
         </div>
     </form>

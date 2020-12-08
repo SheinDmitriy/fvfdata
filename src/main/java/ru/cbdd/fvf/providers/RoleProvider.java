@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import ru.cbdd.fvf.entitys.Role;
+import ru.cbdd.fvf.entitys.User;
 import ru.cbdd.fvf.interfaces.iproviders.IRoleProvider;
 
 import java.util.List;
@@ -17,7 +18,9 @@ public class RoleProvider implements IRoleProvider {
 
     private static final String SELECT_ROLE_ALL = "select * from roles";
 
-    private static final String SELECT_ROLE_BY_USER_ID = "select roles.* from cbddbd.roles join users_roles on users_roles.user_id = :u_id and users_roles.role_id = roles.id";
+    private static final String SELECT_ROLE_BY_USER_ID = "select roles.* from roles join users_roles where users_roles.user_id = :u_id and users_roles.role_id = roles.id";
+
+    private static final String INSERT_ROLE = "insert into users_roles(user_id, role_id) values(:userId, :roleId)";
 
     public RoleProvider(@Autowired Sql2o sql2o) {
         this.sql2o = sql2o;
@@ -49,6 +52,17 @@ public class RoleProvider implements IRoleProvider {
             return connection.createQuery(SELECT_ROLE_ALL, false)
                     .setColumnMappings(Role.COLUMN_MAPPINGS)
                     .executeAndFetch(Role.class);
+        }
+    }
+
+    @Override
+    public void save(Long userId, Long roleId) {
+        try (Connection connection = sql2o.open()) {
+            connection.createQuery(INSERT_ROLE, true)
+                    .addParameter("userId", userId)
+                    .addParameter("roleId",roleId)
+                    .setColumnMappings(Role.COLUMN_MAPPINGS)
+                    .executeUpdate();
         }
     }
 }

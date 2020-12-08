@@ -43,8 +43,8 @@ public class UserProvider implements IUserProvider {
     @Override
     public void save(User user) {
         try (Connection connection = sql2o.open()) {
-            if(connection.createQuery(CHECK_USER).addParameter("u_name",
-                    user.getUsername()).setColumnMappings(User.COLUMN_MAPPINGS).executeAndFetchFirst(User.class).getId() != null){
+            if(connection.createQuery(CHECK_USER, false).addParameter("u_name",
+                    user.getUsername()).setColumnMappings(User.COLUMN_MAPPINGS).executeAndFetchFirst(User.class) != null){
                 connection.createQuery(UPDATE_USER, false)
                         .addParameter("v_username", user.getUsername())
                         .addParameter("v_password", user.getPassword())

@@ -11,4 +11,6 @@ public interface IRoleProvider {
     List<Role> findByUserId(Long id);
 
     List<Role> findAll();
+
+    void save(Long userId, Long roleId);
 }

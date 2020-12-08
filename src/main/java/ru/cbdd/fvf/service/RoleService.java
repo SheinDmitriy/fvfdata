@@ -11,6 +11,12 @@ import java.util.List;
 public class RoleService {
 
     private IRoleProvider roleProvider;
+    private UserService userService;
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     @Autowired
     public void setRoleProvider(IRoleProvider roleProvider) {
@@ -19,5 +25,16 @@ public class RoleService {
 
     public List<Role> findAll() {
         return roleProvider.findAll();
+    }
+
+    public List<Role> findByUserId(Long id){
+        return roleProvider.findByUserId(id);
+    }
+
+    public void save(String username, List<String> roles) {
+        Long id = userService.findByUserName(username).getId();
+        for (String r: roles) {
+            roleProvider.save(id, roleProvider.findOneByName(r).getId());
+        }
     }
 }
