@@ -35,8 +35,8 @@ public class UsersController {
 
     @GetMapping("/{id}")
     public String editUser(@PathVariable(value = "id") Long id, Model model) {
-        model.addAttribute("user", userService.findById(id).orElseThrow(NotFoundException::new));
-        model.addAttribute("roles", roleService.findByUserId(id));
+        model.addAttribute("user", userService.findById(id));
+//        model.addAttribute("roles", roleService.findByUserId(id));
         return "user_page";
     }
 
@@ -58,7 +58,6 @@ public class UsersController {
             model.addAttribute("roles", roleService.findAll());
             return "user_form";
         }
-
         userService.save(systemUser);
         return "redirect:/users";
     }

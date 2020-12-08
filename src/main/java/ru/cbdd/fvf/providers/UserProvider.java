@@ -71,12 +71,12 @@ public class UserProvider implements IUserProvider {
     }
 
     @Override
-    public Optional<User> findById(Long id) {
+    public User findById(Long id) {
         try (Connection connection = sql2o.open()) {
-            return Optional.of(connection.createQuery(SELECT_USER_ID, false)
+            return connection.createQuery(SELECT_USER_ID, false)
                     .addParameter("q_id", id)
                     .setColumnMappings(User.COLUMN_MAPPINGS)
-                    .executeAndFetchFirst(User.class));
+                    .executeAndFetchFirst(User.class);
         }
     }
 }

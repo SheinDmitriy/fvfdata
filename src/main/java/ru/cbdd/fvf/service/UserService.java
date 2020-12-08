@@ -12,13 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.cbdd.fvf.entitys.Role;
 import ru.cbdd.fvf.entitys.SystemUser;
 import ru.cbdd.fvf.entitys.User;
-import ru.cbdd.fvf.interfaces.iproviders.IRoleProvider;
 import ru.cbdd.fvf.interfaces.iproviders.IUserProvider;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,7 +41,7 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public User findByUserName(String username) {
-        return userProvider.findByUsername(username);
+        return makeUser(userProvider.findByUsername(username));
     }
 
     @Transactional
@@ -69,7 +66,7 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-                mapRolesToAuthorities(roleService.findByUserId(user.getId())));
+                mapRolesToAuthorities(user.getRoles()));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
@@ -77,14 +74,23 @@ public class UserService implements UserDetailsService {
     }
 
     public List<User> findAll() {
-        return userProvider.findAll();
+        List<User> users = userProvider.findAll();
+        for (User u: users) {
+            makeUser(u);
+        }
+        return users;
     }
 
-    public Optional<User> findById(Long id) {
-        return userProvider.findById(id);
+    public User findById(Long id) {
+        return makeUser(userProvider.findById(id));
     }
 
-    public Optional<User> findByIdSystemUser(Long id) {
-        return userProvider.findById(id);
+    private User makeUser(User user){
+         user.setRoles(roleService.findByUserId(user.getId()));
+         return user;
     }
+
+//    public Optional<User> findByIdSystemUser(Long id) {
+//        return userProvider.findById(id);
+//    }
 }
