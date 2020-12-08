@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.cbdd.fvf.entitys.Role;
 import ru.cbdd.fvf.entitys.SystemUser;
 import ru.cbdd.fvf.service.RoleService;
 import ru.cbdd.fvf.service.UserService;
@@ -54,7 +53,6 @@ public class UsersController {
             return "user_form";
         }
         if (!systemUser.getPassword().equals(systemUser.getMatchingPassword())) {
-//            result.rejectValue("password", "", "Password not matching");
             model.addAttribute("error", "Password not matching");
             model.addAttribute("user", systemUser);
             model.addAttribute("roles", roleService.findAll());
