@@ -37,7 +37,7 @@ public class UsersController {
     public String editUser(@PathVariable(value = "id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id).orElseThrow(NotFoundException::new));
         model.addAttribute("roles", roleService.findByUserId(id));
-        return "user_form";
+        return "user_page";
     }
 
     @GetMapping("/form")
