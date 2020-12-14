@@ -26,5 +26,4 @@ public class Complex extends AbstractEntity {
     private Verification verification;
 
     private BuhData buhData;
-
 }
