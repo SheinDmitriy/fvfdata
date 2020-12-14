@@ -5,8 +5,8 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ComplexType extends AbstractEntity {
+public class ComplexMark extends AbstractEntity {
 
-    private String type;
+    private String mark;
 
 }

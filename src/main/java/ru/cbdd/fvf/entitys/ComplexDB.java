@@ -20,6 +20,10 @@ public class ComplexDB extends AbstractEntity{
 
     private Long complexType_id;
 
+    private Long complexMark_id;
+
+    private Long complexStatus_id;
+
     private Long verification_id;
 
     private Long buhData_id;
@@ -33,6 +37,8 @@ public class ComplexDB extends AbstractEntity{
         COLUMN_MAPPINGS.put("complex_place_id", "complexPlace_id");
         COLUMN_MAPPINGS.put("network_id", "network_id");
         COLUMN_MAPPINGS.put("complex_type_id", "complexType_id");
+        COLUMN_MAPPINGS.put("complex_mark_id", "complexMark_id");
+        COLUMN_MAPPINGS.put("complex_status_id", "complexStatus_id");
         COLUMN_MAPPINGS.put("buh_data_id", "buhData_id");
         COLUMN_MAPPINGS.put("verification_id", "verification_id");
     }
