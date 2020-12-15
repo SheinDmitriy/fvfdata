@@ -3,7 +3,10 @@ package ru.cbdd.fvf.providers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.sql2o.Sql2o;
+import ru.cbdd.fvf.entitys.ComplexDB;
 import ru.cbdd.fvf.interfaces.iproviders.IComplexDBProvider;
+
+import java.util.List;
 
 @Component
 public class ComplexDBProvider implements IComplexDBProvider {
@@ -11,5 +14,10 @@ public class ComplexDBProvider implements IComplexDBProvider {
 
     public ComplexDBProvider(@Autowired Sql2o sql2o) {
         this.sql2o = sql2o;
+    }
+
+    @Override
+    public List<ComplexDB> findAll() {
+        return null;
     }
 }
