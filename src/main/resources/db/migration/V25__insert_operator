@@ -1,4 +1,4 @@
-INSERT INTO operator (operator)
+INSERT INTO operator (title)
 VALUES
 ('GTNT'),
 ('МТС'),
