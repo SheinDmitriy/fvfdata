@@ -21,21 +21,21 @@ public class ComplexService {
         this.complexPlaceService = complexPlaceService;
     }
 
-    public List<Complex> findAll() {
-        List<Complex> complex = new ArrayList<>();
-        for (ComplexDB c: complexDBProvider.findAll()) {
-            complex.add(makeComplex(c));
-        }
-        return complex;
-    }
-
-    private Complex makeComplex(ComplexDB complexDB) {
-
-        return Complex.builder()
-                .id(complexDB.getId())
-                .complexName(complexDB.getComplexName())
-                .seriesNumber(complexDB.getSeriesNumber())
-                .complexPlace(complexPlaceService.findById(complexDB.getComplexPlace_id()))
-                .build();
-    }
+//    public List<Complex> findAll() {
+//        List<Complex> complex = new ArrayList<>();
+//        for (ComplexDB c: complexDBProvider.findAll()) {
+//            complex.add(makeComplex(c));
+//        }
+//        return complex;
+//    }
+//
+//    private Complex makeComplex(ComplexDB complexDB) {
+//
+//        return Complex.builder()
+//                .id(complexDB.getId())
+//                .complexName(complexDB.getComplexName())
+//                .seriesNumber(complexDB.getSeriesNumber())
+//                .complexPlace(complexPlaceService.findById(complexDB.getComplexPlace_id()))
+//                .build();
+//    }
 }

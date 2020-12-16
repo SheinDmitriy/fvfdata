@@ -1,0 +1,9 @@
+INSERT INTO operator (operator)
+VALUES
+('GTNT'),
+('МТС'),
+('Tele2'),
+('Дом.ру'),
+('Мегафон'),
+('Билайн'),
+('Ростелеком');

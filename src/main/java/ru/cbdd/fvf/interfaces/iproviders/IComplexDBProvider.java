@@ -1,10 +1,8 @@
 package ru.cbdd.fvf.interfaces.iproviders;
 
-import ru.cbdd.fvf.entitys.ComplexDB;
-
-import java.util.List;
+import ru.cbdd.fvf.entitys.Complex;
 
 public interface IComplexDBProvider {
 
-    List<ComplexDB> findAll();
+    Complex findById(Long id);
 }
