@@ -13,10 +13,12 @@ import java.util.List;
 public class ComplexService {
 
     private IComplexDBProvider complexDBProvider;
+    private ComplexPlaceService complexPlaceService;
 
     @Autowired
-    public void setComplexDBProvider(IComplexDBProvider complexDBProvider) {
+    public ComplexService(IComplexDBProvider complexDBProvider, ComplexPlaceService complexPlaceService) {
         this.complexDBProvider = complexDBProvider;
+        this.complexPlaceService = complexPlaceService;
     }
 
     public List<Complex> findAll() {
@@ -28,8 +30,12 @@ public class ComplexService {
     }
 
     private Complex makeComplex(ComplexDB complexDB) {
-        Complex complex = new Complex();
 
-        return complex;
+        return Complex.builder()
+                .id(complexDB.getId())
+                .complexName(complexDB.getComplexName())
+                .seriesNumber(complexDB.getSeriesNumber())
+                .complexPlace(complexPlaceService.findById(complexDB.getComplexPlace_id()))
+                .build();
     }
 }

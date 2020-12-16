@@ -5,6 +5,6 @@ create table operator (
                          title varchar(255),
                          contract varchar(255),
                          operator bigint,
-                         dateUntil TIMESTAMP,
+                         date_until TIMESTAMP,
                          primary key (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

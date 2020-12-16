@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 abstract class AbstractEntity {
 
-    private Long id;
+    Long id;
 }

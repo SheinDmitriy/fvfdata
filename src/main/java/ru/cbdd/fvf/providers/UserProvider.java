@@ -8,7 +8,6 @@ import ru.cbdd.fvf.entitys.User;
 import ru.cbdd.fvf.interfaces.iproviders.IUserProvider;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class UserProvider implements IUserProvider {
