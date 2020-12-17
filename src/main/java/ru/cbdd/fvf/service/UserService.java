@@ -61,7 +61,7 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userProvider.findByUsername(username);
+        User user = makeUser(userProvider.findByUsername(username));
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
@@ -89,8 +89,4 @@ public class UserService implements UserDetailsService {
          user.setRoles(roleService.findByUserId(user.getId()));
          return user;
     }
-
-//    public Optional<User> findByIdSystemUser(Long id) {
-//        return userProvider.findById(id);
-//    }
 }

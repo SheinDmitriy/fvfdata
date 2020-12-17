@@ -38,4 +38,8 @@ public class ComplexService {
 //                .complexPlace(complexPlaceService.findById(complexDB.getComplexPlace_id()))
 //                .build();
 //    }
+
+    public Complex findById(){
+        return complexDBProvider.findById(1l);
+    }
 }

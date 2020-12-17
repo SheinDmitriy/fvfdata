@@ -11,7 +11,7 @@ import ru.cbdd.fvf.interfaces.iproviders.IComplexPlaceProvider;
 public class ComplexPlaceProvider implements IComplexPlaceProvider {
     private final Sql2o sql2o;
 
-    private static final String SELECT_COMPLEX_PLACE_ID = "select * from complex_place where id = :q_id";
+    private static final String SELECT_COMPLEX_PLACE_ID = "select * from complex_place where id = :id";
 
     public ComplexPlaceProvider(@Autowired Sql2o sql2o) {
         this.sql2o = sql2o;
@@ -21,7 +21,7 @@ public class ComplexPlaceProvider implements IComplexPlaceProvider {
     public ComplexPlace findById(Long id) {
         try (Connection connection = sql2o.open()) {
             return connection.createQuery(SELECT_COMPLEX_PLACE_ID, false)
-                    .addParameter("q_id", id)
+                    .addParameter("id", id)
                     .setColumnMappings(ComplexPlace.COLUMN_MAPPINGS)
                     .executeAndFetchFirst(ComplexPlace.class);
         }
