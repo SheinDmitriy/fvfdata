@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.cbdd.fvf.entitys.Complex;
+import ru.cbdd.fvf.entitys.ComplexDB;
 import ru.cbdd.fvf.entitys.SystemUser;
 import ru.cbdd.fvf.service.ComplexService;
 import ru.cbdd.fvf.service.RoleService;
@@ -34,7 +35,7 @@ public class UsersController {
     @GetMapping
     public String userPage(Model model) {
         model.addAttribute("users", userService.findAll());
-        Complex complex = complexService.findById();
+        ComplexDB complex = complexService.findById();
         return "users";
     }
 

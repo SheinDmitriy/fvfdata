@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import ru.cbdd.fvf.entitys.Complex;
+import ru.cbdd.fvf.entitys.ComplexDB;
 import ru.cbdd.fvf.interfaces.iproviders.IComplexDBProvider;
 
 @Component
@@ -29,12 +30,12 @@ public class ComplexDBProvider implements IComplexDBProvider {
 //    }
 
     @Override
-    public Complex findById(Long id) {
+    public ComplexDB findById(Long id) {
         try (Connection connection = sql2o.open()){
             return connection.createQuery(SELECT_COMPLEX_BY_ID, false)
                     .addParameter("id", id)
-                    .setColumnMappings(Complex.COLUMN_MAPPINGS)
-                    .executeAndFetchFirst(Complex.class);
+                    .setColumnMappings(ComplexDB.COLUMN_MAPPINGS)
+                    .executeAndFetchFirst(ComplexDB.class);
         }
     }
 }

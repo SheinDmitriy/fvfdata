@@ -7,4 +7,4 @@ CREATE TABLE buh_data (
   inventory_number  VARCHAR(50) DEFAULT NULL,
   price             DECIMAL(8,2) NOT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB;

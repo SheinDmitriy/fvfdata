@@ -39,7 +39,7 @@ public class ComplexService {
 //                .build();
 //    }
 
-    public Complex findById(){
+    public ComplexDB findById(){
         return complexDBProvider.findById(1l);
     }
 }

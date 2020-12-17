@@ -26,5 +26,5 @@ create table complex (
               references buh_data (id),
        constraint FK_NETWORK_ID foreign key (network_id)
               references network (id)
-    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+    ) ENGINE=InnoDB;
 

@@ -6,4 +6,4 @@ CREATE TABLE verification (
   verification_date     TIMESTAMP,
   verification_date_until     TIMESTAMP,
   PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB;

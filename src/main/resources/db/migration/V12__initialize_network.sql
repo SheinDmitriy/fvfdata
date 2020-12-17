@@ -12,4 +12,4 @@ create table network (
   REFERENCES link_type (id),
   CONSTRAINT FK_OPERATOR_ID FOREIGN KEY (operator_id)
   REFERENCES operator (id)
-  ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+  ) ENGINE = InnoDB;

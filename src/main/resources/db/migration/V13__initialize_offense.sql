@@ -4,4 +4,4 @@ CREATE TABLE offense (
   id bigint not null auto_increment,
   type_offense varchar(255),
   PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB;

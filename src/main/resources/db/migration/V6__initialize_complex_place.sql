@@ -9,4 +9,4 @@ DROP TABLE IF EXISTS complex_place;
        primary key (id),
        constraint FK_ROAD_TYPE_ID foreign key (road_type_id)
        references road_type (id)
-    ) engine=InnoDB
+    ) engine=InnoDB;
