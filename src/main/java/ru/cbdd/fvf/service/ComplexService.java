@@ -21,25 +21,33 @@ public class ComplexService {
         this.complexPlaceService = complexPlaceService;
     }
 
-//    public List<Complex> findAll() {
-//        List<Complex> complex = new ArrayList<>();
-//        for (ComplexDB c: complexDBProvider.findAll()) {
-//            complex.add(makeComplex(c));
-//        }
-//        return complex;
-//    }
-//
-//    private Complex makeComplex(ComplexDB complexDB) {
-//
-//        return Complex.builder()
-//                .id(complexDB.getId())
-//                .complexName(complexDB.getComplexName())
-//                .seriesNumber(complexDB.getSeriesNumber())
-//                .complexPlace(complexPlaceService.findById(complexDB.getComplexPlace_id()))
-//                .build();
-//    }
+    public List<Complex> findAll() {
+        List<Complex> complex = new ArrayList<>();
+        for (ComplexDB c: complexDBProvider.findAll()) {
+            complex.add(makeComplex(c));
+        }
+        return complex;
+    }
 
-    public ComplexDB findById(){
-        return complexDBProvider.findById(1l);
+    private Complex makeComplex(ComplexDB complexDB) {
+
+        return Complex.builder()
+                .id(complexDB.getId())
+                .complexName(complexDB.getComplexName())
+                .seriesNumber(complexDB.getSeriesNumber())
+                .complexPlace(complexPlaceService.findById(complexDB.getComplexPlace_id()))
+                .network(networkService.findById(complexDB.getNetwork_id()))
+                .documents(documentsSevice.findById(complexDB.getId()))
+                .offenses(offenseService.findById(complexDB.getId()))
+                .complexType(complexTypeService.findById(complexDB.getComplexType_id()))
+                .complexStatus(complexStatusService.findbyId(complexDB.getComplexStatus_id()))
+                .complexMark(complexMarkService.findById(complexDB.getComplexMark_id()))
+                .verification(verificationService.findById(complexDB.getVerification_id()))
+                .buhData(buhDataSevice.findById(complexDB.getBuhData_id()))
+                .build();
+    }
+
+    public Complex findById(Long id){
+        return makeComplex(complexDBProvider.findById(id));
     }
 }

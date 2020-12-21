@@ -1,8 +1,8 @@
 package ru.cbdd.fvf.interfaces.iproviders;
 
-import ru.cbdd.fvf.entitys.ComplexPlace;
+import ru.cbdd.fvf.entitys.ComplexPlaceDB;
 
 public interface IComplexPlaceProvider {
 
-    ComplexPlace findById(Long id);
+    ComplexPlaceDB findById(Long id);
 }

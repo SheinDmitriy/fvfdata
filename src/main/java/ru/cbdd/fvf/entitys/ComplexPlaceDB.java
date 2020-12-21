@@ -1,6 +1,5 @@
 package ru.cbdd.fvf.entitys;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -9,7 +8,7 @@ import java.util.Map;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ComplexPlace extends AbstractEntity{
+public class ComplexPlaceDB extends AbstractEntity{
 
     // Место утсановки
     private String place;
@@ -21,14 +20,14 @@ public class ComplexPlace extends AbstractEntity{
     private String longitude;
 
     // Связь с типом дороги
-    private RoadType roadType;
+    private Long roadType_id;
 
-    @Builder
-    public ComplexPlace(String place, String latitude, String longitude, RoadType roadType, Long id) {
-        this.place = place;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.roadType = roadType;
-        this.id = id;
+    public static final Map<String, String> COLUMN_MAPPINGS = new HashMap<>();
+
+    static {
+        COLUMN_MAPPINGS.put("id", "id");
+        COLUMN_MAPPINGS.put("latitude", "latitude");
+        COLUMN_MAPPINGS.put("longitude", "longitude");
+        COLUMN_MAPPINGS.put("road_type_id", "roadType_id");
     }
 }

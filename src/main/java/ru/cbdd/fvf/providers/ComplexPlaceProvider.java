@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
-import ru.cbdd.fvf.entitys.ComplexPlace;
+import ru.cbdd.fvf.entitys.ComplexPlaceDB;
 import ru.cbdd.fvf.interfaces.iproviders.IComplexPlaceProvider;
 
 @Component
@@ -18,12 +18,12 @@ public class ComplexPlaceProvider implements IComplexPlaceProvider {
     }
 
     @Override
-    public ComplexPlace findById(Long id) {
+    public ComplexPlaceDB findById(Long id) {
         try (Connection connection = sql2o.open()) {
             return connection.createQuery(SELECT_COMPLEX_PLACE_ID, false)
                     .addParameter("id", id)
-                    .setColumnMappings(ComplexPlace.COLUMN_MAPPINGS)
-                    .executeAndFetchFirst(ComplexPlace.class);
+                    .setColumnMappings(ComplexPlaceDB.COLUMN_MAPPINGS)
+                    .executeAndFetchFirst(ComplexPlaceDB.class);
         }
     }
 }
