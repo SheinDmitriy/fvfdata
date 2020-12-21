@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import ru.cbdd.fvf.entitys.Network;
+import ru.cbdd.fvf.entitys.NetworkDB;
 import ru.cbdd.fvf.interfaces.iproviders.INetworkProvider;
 
 @Component
@@ -18,12 +19,12 @@ public class NetworkProvider implements INetworkProvider {
     }
 
     @Override
-    public Network findById(Long id) {
+    public NetworkDB findById(Long id) {
         try (Connection connection = sql2o.open()) {
             return connection.createQuery(SELECT_NETWORK_BY_ID, false)
                     .addParameter("id", id)
-                    .setColumnMappings(Network.COLUMN_MAPPINGS)
-                    .executeAndFetchFirst(Network.class);
+                    .setColumnMappings(NetworkDB.COLUMN_MAPPINGS)
+                    .executeAndFetchFirst(NetworkDB.class);
         }
     }
 }

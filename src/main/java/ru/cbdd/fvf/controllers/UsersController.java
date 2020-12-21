@@ -33,7 +33,6 @@ public class UsersController {
     @GetMapping
     public String userPage(Model model) {
         model.addAttribute("users", userService.findAll());
-        ComplexDB complex = complexService.findById();
         return "users";
     }
 

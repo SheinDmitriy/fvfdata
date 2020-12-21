@@ -1,8 +1,8 @@
 package ru.cbdd.fvf.interfaces.iproviders;
 
-import ru.cbdd.fvf.entitys.Network;
+import ru.cbdd.fvf.entitys.NetworkDB;
 
 public interface INetworkProvider {
 
-    Network findById (Long id);
+    NetworkDB findById (Long id);
 }

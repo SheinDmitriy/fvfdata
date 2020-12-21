@@ -14,6 +14,7 @@ public class ComplexService {
 
     private IComplexDBProvider complexDBProvider;
     private ComplexPlaceService complexPlaceService;
+    private NetworkService networkService;
 
     @Autowired
     public ComplexService(IComplexDBProvider complexDBProvider, ComplexPlaceService complexPlaceService) {

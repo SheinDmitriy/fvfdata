@@ -1,5 +1,6 @@
 package ru.cbdd.fvf.entitys;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -25,14 +26,13 @@ public class Network extends AbstractEntity{
     // Оператор
     private Operator operator;
 
-    public static final Map<String, String> COLUMN_MAPPINGS = new HashMap<>();
-
-    static {
-        COLUMN_MAPPINGS.put("id", "id");
-        COLUMN_MAPPINGS.put("ip_address", "ipAddress");
-        COLUMN_MAPPINGS.put("mask", "mask");
-        COLUMN_MAPPINGS.put("gateway", "gateway");
-        COLUMN_MAPPINGS.put("operator_id", "operator");
-        COLUMN_MAPPINGS.put("link_type_id", "linkType");
+    @Builder
+    public Network(String ipAddress, String mask, String gateway, LinkType linkType, Operator operator, Long id) {
+        this.ipAddress = ipAddress;
+        this.mask = mask;
+        this.gateway = gateway;
+        this.linkType = linkType;
+        this.operator = operator;
+        this.id = id;
     }
 }
