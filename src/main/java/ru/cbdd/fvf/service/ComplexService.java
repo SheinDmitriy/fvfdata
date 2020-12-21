@@ -15,11 +15,30 @@ public class ComplexService {
     private IComplexDBProvider complexDBProvider;
     private ComplexPlaceService complexPlaceService;
     private NetworkService networkService;
+    private DocumentsService documentsService;
+    private OffenseService offenseService;
+    private ComplexTypeService complexTypeService;
+    private ComplexStatusService complexStatusService;
+    private ComplexMarkService complexMarkService;
+    private VerificationService verificationService;
+    private BuhDataService buhDataService;
 
     @Autowired
-    public ComplexService(IComplexDBProvider complexDBProvider, ComplexPlaceService complexPlaceService) {
+    public ComplexService(IComplexDBProvider complexDBProvider, ComplexPlaceService complexPlaceService,
+                          NetworkService networkService, DocumentsService documentsService, OffenseService offenseService,
+                          ComplexTypeService complexTypeService, ComplexStatusService complexStatusService,
+                          ComplexMarkService complexMarkService, VerificationService verificationService,
+                          BuhDataService buhDataService) {
         this.complexDBProvider = complexDBProvider;
         this.complexPlaceService = complexPlaceService;
+        this.networkService = networkService;
+        this.documentsService = documentsService;
+        this.offenseService = offenseService;
+        this.complexTypeService = complexTypeService;
+        this.complexStatusService = complexStatusService;
+        this.complexMarkService = complexMarkService;
+        this.verificationService = verificationService;
+        this.buhDataService = buhDataService;
     }
 
     public List<Complex> findAll() {
@@ -38,13 +57,13 @@ public class ComplexService {
                 .seriesNumber(complexDB.getSeriesNumber())
                 .complexPlace(complexPlaceService.findById(complexDB.getComplexPlace_id()))
                 .network(networkService.findById(complexDB.getNetwork_id()))
-                .documents(documentsSevice.findById(complexDB.getId()))
+                .documents(documentsService.findById(complexDB.getId()))
                 .offenses(offenseService.findById(complexDB.getId()))
                 .complexType(complexTypeService.findById(complexDB.getComplexType_id()))
                 .complexStatus(complexStatusService.findbyId(complexDB.getComplexStatus_id()))
                 .complexMark(complexMarkService.findById(complexDB.getComplexMark_id()))
                 .verification(verificationService.findById(complexDB.getVerification_id()))
-                .buhData(buhDataSevice.findById(complexDB.getBuhData_id()))
+                .buhData(buhDataService.findById(complexDB.getBuhData_id()))
                 .build();
     }
 
