@@ -3,6 +3,7 @@ package ru.cbdd.fvf.entitys;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +14,9 @@ public class Verification extends AbstractEntity {
 
     private String verificationNumber;
 
-    private LocalDateTime verificationDate;
+    private Timestamp verificationDate;
 
-    private LocalDateTime verificationDateUntil;
+    private Timestamp verificationDateUntil;
 
     public static final Map<String, String> COLUMN_MAPPINGS = new HashMap<>();
 

@@ -20,6 +20,7 @@ public class FvfController {
 
     @GetMapping
     public String fvfPage(Model model) {
+        model.addAttribute("complexes", complexService.findAll());
         return "fvf";
     }
 }

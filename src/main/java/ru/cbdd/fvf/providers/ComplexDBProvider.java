@@ -8,6 +8,8 @@ import ru.cbdd.fvf.entitys.Complex;
 import ru.cbdd.fvf.entitys.ComplexDB;
 import ru.cbdd.fvf.interfaces.iproviders.IComplexDBProvider;
 
+import java.util.List;
+
 @Component
 public class ComplexDBProvider implements IComplexDBProvider {
     private final Sql2o sql2o;
@@ -20,14 +22,14 @@ public class ComplexDBProvider implements IComplexDBProvider {
         this.sql2o = sql2o;
     }
 
-//    @Override
-//    public List<ComplexDB> findAll() {
-//        try (Connection connection = sql2o.open()){
-//            return connection.createQuery(SELECT_ALL_COMPLEX, false)
-//                    .setColumnMappings(ComplexDB.COLUMN_MAPPINGS)
-//                    .executeAndFetch(ComplexDB.class);
-//        }
-//    }
+    @Override
+    public List<ComplexDB> findAll() {
+        try (Connection connection = sql2o.open()){
+            return connection.createQuery(SELECT_ALL_COMPLEX, false)
+                    .setColumnMappings(ComplexDB.COLUMN_MAPPINGS)
+                    .executeAndFetch(ComplexDB.class);
+        }
+    }
 
     @Override
     public ComplexDB findById(Long id) {

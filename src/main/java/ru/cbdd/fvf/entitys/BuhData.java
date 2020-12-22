@@ -3,6 +3,7 @@ package ru.cbdd.fvf.entitys;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +14,7 @@ public class BuhData extends AbstractEntity {
 
     private String contractNumber;
 
-    private LocalDateTime dataStartUp;
+    private Timestamp dataStartUp;
 
     private String inventoryNumber;
 
