@@ -60,7 +60,7 @@ public class ComplexService {
                 .documents(documentsService.findById(complexDB.getId()))
                 .offenses(offenseService.findById(complexDB.getId()))
                 .complexType(complexTypeService.findById(complexDB.getComplexType_id()))
-                .complexStatus(complexStatusService.findbyId(complexDB.getComplexStatus_id()))
+                .complexStatus(complexStatusService.findById(complexDB.getComplexStatus_id()))
                 .complexMark(complexMarkService.findById(complexDB.getComplexMark_id()))
                 .verification(verificationService.findById(complexDB.getVerification_id()))
                 .buhData(buhDataService.findById(complexDB.getBuhData_id()))
