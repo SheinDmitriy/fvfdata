@@ -39,7 +39,6 @@ public class UsersController {
     @GetMapping("/{id}")
     public String editUser(@PathVariable(value = "id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id));
-//        model.addAttribute("roles", roleService.findByUserId(id));
         return "user_page";
     }
 

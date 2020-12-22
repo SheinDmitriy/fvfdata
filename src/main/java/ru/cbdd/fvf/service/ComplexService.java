@@ -1,5 +1,6 @@
 package ru.cbdd.fvf.service;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.cbdd.fvf.entitys.Complex;
@@ -62,12 +63,16 @@ public class ComplexService {
                 .complexType(complexTypeService.findById(complexDB.getComplexType_id()))
                 .complexStatus(complexStatusService.findById(complexDB.getComplexStatus_id()))
                 .complexMark(complexMarkService.findById(complexDB.getComplexMark_id()))
-                .verification(verificationService.findById(complexDB.getVerification_id()))
-                .buhData(buhDataService.findById(complexDB.getBuhData_id()))
+//                .verification(verificationService.findById(complexDB.getVerification_id()))
+//                .buhData(buhDataService.findById(complexDB.getBuhData_id()))
                 .build();
     }
 
     public Complex findById(Long id){
         return makeComplex(complexDBProvider.findById(id));
+    }
+
+    public Complex findBySN(String sn) {
+        return makeComplex(complexDBProvider.findBySN(sn));
     }
 }

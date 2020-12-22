@@ -23,7 +23,6 @@ public class VerificationProvider implements IVerificationProvider {
             return connection.createQuery(SELECT_VERIFICATION_BY_ID, false)
                     .addParameter("id", id)
                     .setColumnMappings(Verification.COLUMN_MAPPINGS)
-
                     .executeAndFetchFirst(Verification.class);
         }
     }

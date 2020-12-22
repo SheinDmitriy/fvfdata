@@ -15,23 +15,30 @@
     <h2 class="h2-index">Фотовидеофиксация</h2>
     <form th:action="@{/}"> <button  class="button button-index on_main">На главную</button></form>
 
-    <div style="display: flex; width: 20%; justify-content: space-around; margin-left: auto; margin-right: auto">
-        <!--<div>-->
-        <!--<div><h4>Id</h4></div>-->
-        <!--<div th:unless="${users.isEmpty()}" th:each="user : ${users}" th:text="${user.id}" style="margin-bottom: 7px"></div>-->
+    <div >
 
+        <table class="table_border table">
+            <thead>
+            <tr class="table_border">
+                <th class="table_border">S/N</th>
+                <th class="table_border">Место</th>
+                <th class="table_border">Марка</th>
+                <th class="table_border">Тип</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="complex : ${complexes}">
+                <td th:text="${complex.seriesNumber}" class="table_border"></td>
+                <td  class="table_border"><a th:text="${complex.complexName}" th:href="@{/fvf/{sn}(sn = ${complex.seriesNumber})}"></a></td>
+                <td th:text="${complex.complexMark.mark}" class="table_border"></td>
+                <td th:text="${complex.complexType.type}" class="table_border"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!--<div th:if="${complexes.isEmpty()}">-->
+            <!--<div >No data</div>-->
         <!--</div>-->
-
-        <div  >
-            <div><h4>Username</h4></div>
-            <div  th:unless="${complexes.isEmpty()}" th:each="complex : ${complexes}" style="margin-bottom: 7px" th:text="${complex.seriesNumber}">  </div>
-            <div  th:unless="${complexes.isEmpty()}" th:each="complex : ${complexes}" style="margin-bottom: 7px" th:text="${complex.complexName}">  </div>
-
-        </div>
-
-        <div th:if="${complexes.isEmpty()}">
-            <div >No data</div>
-        </div>
     </div>
 
 </div>

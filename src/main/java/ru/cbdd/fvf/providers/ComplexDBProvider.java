@@ -18,6 +18,8 @@ public class ComplexDBProvider implements IComplexDBProvider {
 
     private static final String SELECT_COMPLEX_BY_ID = "select * from complex where id = :id";
 
+    private static final String SELECT_COMPLEX_BY_SN = "select * from complex where series_number = :sn";
+
     public ComplexDBProvider(@Autowired Sql2o sql2o) {
         this.sql2o = sql2o;
     }
@@ -28,6 +30,16 @@ public class ComplexDBProvider implements IComplexDBProvider {
             return connection.createQuery(SELECT_ALL_COMPLEX, false)
                     .setColumnMappings(ComplexDB.COLUMN_MAPPINGS)
                     .executeAndFetch(ComplexDB.class);
+        }
+    }
+
+    @Override
+    public ComplexDB findBySN(String sn) {
+        try (Connection connection = sql2o.open()){
+            return connection.createQuery(SELECT_COMPLEX_BY_SN, false)
+                    .addParameter("sn", sn)
+                    .setColumnMappings(ComplexDB.COLUMN_MAPPINGS)
+                    .executeAndFetchFirst(ComplexDB.class);
         }
     }
 
