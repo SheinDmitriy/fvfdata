@@ -11,19 +11,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Table(name = "users")
-public class User {
+public class User extends AbstractEntity{
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id")
+//    private Long id;
 
-    @Column(name = "username")
+//    @Column(name = "username")
     private String username;
 
-    @Column(name = "password")
+//    @Column(name = "password")
     private String password;
 
     private List<Role> roles;
