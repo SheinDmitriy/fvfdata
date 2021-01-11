@@ -1,4 +1,4 @@
-package ru.cbdd.config;
+package ru.cbdd.fvf.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

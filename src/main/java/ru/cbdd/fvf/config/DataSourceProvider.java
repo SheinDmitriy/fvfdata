@@ -1,4 +1,4 @@
-package ru.cbdd.config;
+package ru.cbdd.fvf.config;
 
 import com.zaxxer.hikari.HikariConfig;
 

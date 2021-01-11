@@ -1,4 +1,4 @@
-package ru.cbdd.config;
+package ru.cbdd.fvf.config;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
