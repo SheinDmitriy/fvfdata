@@ -4,22 +4,235 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" >
+    <link rel="stylesheet" type="text/css" href="../style.css" >
 </head>
-<body>
-<h2>ComplexFVF</h2>
-<div th:text="${complex.complexName}"></div>
-<div th:text="${complex.id}"></div>
-<div th:text="${complex.complexType}"></div>
-<!--<div th:text="${complex.complexMark}"></div>-->
-<!--<div th:text="${complex.complexStatus}"></div>-->
-<!--<div th:text="${complex.complexPlace}"></div>-->
-<!--<div th:text="${complex.seriesNumber}"></div>-->
-<!--<div th:text="${complex.buhData}"></div>-->
-<!--<div th:text="${complex.network}"></div>-->
-<!--<div th:text="${complex.documents}"></div>-->
-<!--<div th:text="${complex.offenses}"></div>-->
+<body >
+<div class="container">
+    <h2 th:text="${complex.getComplexName()}" class="h2-index"></h2>
+    <form th:action="@{/fvf}">
+        <button  class="button button-index on_main"><< К списку</button>
+        <button  class="button button-index on_main">На главную</button>
+    </form>
+    <hr>
+    <div>
+        <h2>Общее</h2>
+        <div class="span">
+            <table>
+                <tr>
+                    <td>
+                        <span >Название: </span>
+                    </td>
+                    <td>
+                        <span th:text="${complex.getComplexName()}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span >Серийный номер: </span>
+                    </td>
+                    <td>
+                        <span th:text="${complex.getSeriesNumber()}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span >Тип комлпекса: </span>
+                    </td>
+                    <td>
+                        <span th:text="${complex.getComplexType().getType()}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span >Статус: </span>
+                    </td>
+                    <td>
+                        <span th:text="${complex.getComplexStatus().getStatus()}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span >Марка: </span>
+                    </td>
+                    <td>
+                        <span th:text="${complex.getComplexMark().getMark()}"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <h2>Место</h2>
+        <table>
+            <tr>
+                <td>
+                    <span>Место установки: </span>
+                </td>
+                <td>
+                    <span th:text="${complex.getComplexPlace().getPlace()}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Широта: </span>
+                </td>
+                <td>
+                    <span th:text="${complex.getComplexPlace().getLatitude()}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Долгота: </span>
+                </td>
+                <td>
+                    <span th:text="${complex.getComplexPlace().getLongitude()}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Тип дороги: </span>
+                </td>
+                <td>
+                    <span th:text="${complex.getComplexPlace().getRoadType().getRoadType()}"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div>
+        <h2>Поверка</h2>
+        <table>
+            <tr>
+                <td>
+                    <span>№ свидетельства о поверке: </span>
+                </td>
+                <td>
+                    <span th:text="${complex.getVerification().getVerificationNumber()}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Поверка проведена: </span>
+                </td>
+                <td>
+                    <span th:text="${complex.getVerification().getVerificationDate()}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Поверка действительна до:</span>
+                </td>
+                <td>
+                    <span th:text="${complex.getVerification().getVerificationDateUntil()}"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div>
+        <h2>Сеть</h2>
+        <table>
+            <tr>
+                <td>
+                    <span>IP адрес: </span>
+                </td>
+                <td>
+                    <span th:text="${complex.getNetwork().getIpAddress()}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Mask: </span>
+                </td>
+                <td>
+                    <span th:text="${complex.getNetwork().getMask()}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Gateway:</span>
+                </td>
+                <td>
+                    <span th:text="${complex.getNetwork().getGateway()}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Тип связи:</span>
+                </td>
+                <td>
+                    <span th:text="${complex.getNetwork().getLinkType().getLinkType()}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Оператор:</span>
+                </td>
+                <td>
+                    <span th:text="${complex.getNetwork().getOperator().getTitle()}"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div>
+        <h2>Нарушения</h2>
+        <table>
+            <tr>
+                <td th:each="offens : ${complex.getOffenses()}">
+                    <span th:text="${offens.getTypeOffense()}"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div>
+        <h2>Бухгалтерия</h2>
+        <table>
+            <tr>
+                <td>
+                    <span>№ Контракта: </span>
+                </td>
+                <td>
+                    <span th:text="${complex.getBuhData().getContractNumber()}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Инвентраный номер: </span>
+                </td>
+                <td>
+                    <span th:text="${complex.getBuhData().getInventoryNumber()}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Дата ввода в эксплуатацию: </span>
+                </td>
+                <td>
+                    <span th:text="${complex.getBuhData().getDataStartUp()}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Стоимость: </span>
+                </td>
+                <td>
+                    <span th:text="${complex.getBuhData().getPrice()}"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div>
+        <h2>Документация</h2>
+        <div th:each="docs : ${complex.getDocuments()}">
+        <a th:text="${docs.getPath()}" th:href="@{C:photo_2020-12-15_17-19-32.jpg}"></a>
+        </div>
 
+    </div>
+</div>
 
 
 </body>
