@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "complex")
+@Table(name = "tcomplex")
 public class Complex {
 
     @Id
@@ -16,10 +16,10 @@ public class Complex {
     private Long id;
 
     @Column(name = "series_number", unique = true, nullable = false)
-    private String series_number;
+    private String seriesNumber;
 
     @Column(name = "complex_name", nullable = false)
-    private String complex_name;
+    private String complexName;
 
     @ManyToOne
     @JoinColumn(name = "complex_place_id")
@@ -31,5 +31,19 @@ public class Complex {
     @ManyToOne
     @JoinColumn(name = "network_id")
     private Network network;
+
+    private List<Offense> offenses;
+
+    private ComplexType complexType;
+
+    private Verification verification;
+
+    @OneToOne
+    @JoinColumn(name = "buh_data_id")
+    private BuhData buhData;
+
+    @ManyToOne
+    @JoinColumn(name = "complex_status_id")
+    private ComplexStatus status;
 
 }
