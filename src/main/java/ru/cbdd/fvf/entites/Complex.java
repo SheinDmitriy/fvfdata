@@ -34,6 +34,8 @@ public class Complex {
 
     private List<Offense> offenses;
 
+    @OneToOne
+    @JoinColumn(name = "complex_type_id")
     private ComplexType complexType;
 
     private Verification verification;
@@ -42,8 +44,6 @@ public class Complex {
     @JoinColumn(name = "buh_data_id")
     private BuhData buhData;
 
-    @ManyToOne
-    @JoinColumn(name = "complex_status_id")
-    private ComplexStatus status;
+
 
 }
