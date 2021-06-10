@@ -1,4 +1,4 @@
-package ru.cbdd.fvf.validation;
+package ru.cbdd.validation;
 
 import org.springframework.beans.BeanWrapperImpl;
 

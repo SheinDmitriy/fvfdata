@@ -1,4 +1,4 @@
-package ru.cbdd.fvf.controllers;
+package ru.cbdd.main.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

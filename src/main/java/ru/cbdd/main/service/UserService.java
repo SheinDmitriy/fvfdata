@@ -1,4 +1,4 @@
-package ru.cbdd.fvf.service;
+package ru.cbdd.main.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,11 +9,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.cbdd.fvf.entites.Role;
-import ru.cbdd.fvf.dto.SystemUser;
-import ru.cbdd.fvf.entites.User;
-import ru.cbdd.fvf.repositories.UserRepository;
-import ru.cbdd.fvf.repositories.RoleRepository;
+import ru.cbdd.main.entitys.Role;
+import ru.cbdd.main.dto.SystemUser;
+import ru.cbdd.main.entitys.User;
+import ru.cbdd.main.repositories.UserRepository;
+import ru.cbdd.main.repositories.RoleRepository;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -59,7 +59,7 @@ public class UserService implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(systemUser.getPassword()));
 
 
-        user.setRoles(Arrays.asList(roleRepository.findOneByName("ROLE_EMPLOYEE")));
+        user.setRoles(Arrays.asList(roleRepository.findOneByName("ROLE_USER")));
 
         userRepository.save(user);
         return true;

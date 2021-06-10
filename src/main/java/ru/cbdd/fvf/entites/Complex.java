@@ -32,12 +32,18 @@ public class Complex {
     @JoinColumn(name = "network_id")
     private Network network;
 
+    @ManyToMany
+    @JoinTable(name = "tcomplex_offense",
+            joinColumns = @JoinColumn(name = "complex_id"),
+            inverseJoinColumns = @JoinColumn(name = "offense_id"))
     private List<Offense> offenses;
 
     @OneToOne
     @JoinColumn(name = "complex_type_id")
     private ComplexType complexType;
 
+    @OneToOne
+    @JoinColumn(name = "tverification")
     private Verification verification;
 
     @OneToOne

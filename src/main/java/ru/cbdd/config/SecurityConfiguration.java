@@ -1,4 +1,4 @@
-package ru.cbdd.fvf.config;
+package ru.cbdd.config;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import ru.cbdd.fvf.service.UserService;
+import ru.cbdd.main.service.UserService;
 
 @Configuration
 @EnableWebSecurity
@@ -38,6 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/**").permitAll()
                 .antMatchers("/users/**").hasRole("ADMIN")
                 .antMatchers("/users/**").authenticated()
                 .and()

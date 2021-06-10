@@ -1,4 +1,4 @@
-package ru.cbdd.fvf.controllers;
+package ru.cbdd.main.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.cbdd.fvf.dto.SystemUser;
-import ru.cbdd.fvf.repositories.RoleRepository;
-import ru.cbdd.fvf.service.UserService;
-import ru.cbdd.fvf.utils.NotFoundException;
+import ru.cbdd.main.dto.SystemUser;
+import ru.cbdd.main.repositories.RoleRepository;
+import ru.cbdd.main.service.UserService;
+import ru.cbdd.utils.NotFoundException;
 
 import javax.validation.Valid;
 

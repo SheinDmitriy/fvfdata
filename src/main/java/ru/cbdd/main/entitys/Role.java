@@ -1,4 +1,4 @@
-package ru.cbdd.fvf.entites;
+package ru.cbdd.main.entitys;
 
 import lombok.Data;
 

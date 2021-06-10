@@ -1,11 +1,11 @@
-package ru.cbdd.fvf.dto;
+package ru.cbdd.main.dto;
 
 
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.cbdd.fvf.entites.Role;
-import ru.cbdd.fvf.validation.FieldMatch;
+import ru.cbdd.main.entitys.Role;
+import ru.cbdd.validation.FieldMatch;
 //import FieldMatch;
 
 import javax.validation.constraints.NotEmpty;

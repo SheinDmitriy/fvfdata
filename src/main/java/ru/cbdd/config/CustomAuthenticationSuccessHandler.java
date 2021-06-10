@@ -1,11 +1,11 @@
-package ru.cbdd.fvf.config;
+package ru.cbdd.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
-import ru.cbdd.fvf.entites.User;
-import ru.cbdd.fvf.service.UserService;
+import ru.cbdd.main.entitys.User;
+import ru.cbdd.main.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package ru.cbdd.fvf.utils;
+package ru.cbdd.utils;
 
 public class NotFoundException extends RuntimeException{
 
