@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "network")
+@Table(name = "tnetwork")
 @Data
 public class Network {
 
@@ -28,7 +28,7 @@ public class Network {
 
     @ManyToOne
     @JoinColumn(name = "link_id")
-    private Link link;
+    private LinkType linkType;
 
     @ManyToOne
     @JoinColumn(name = "operator_id")

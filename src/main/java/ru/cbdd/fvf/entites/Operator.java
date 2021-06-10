@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "operator")
+@Table(name = "toperator")
 @Data
 public class Operator {
 

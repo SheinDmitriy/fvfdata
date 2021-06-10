@@ -1,20 +1,19 @@
 package ru.cbdd.fvf.entites;
-
 import lombok.Data;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "troad_type")
 @Data
-public class RoadType {
+@Entity
+@Table(name = "toffense")
+public class Offense {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    // Тип дороги
-    @Column(name = "road_type")
-    private String roadType;
+    // Тип нарушений
+    @Column(name = "type_offense")
+    private String typeOffense;
 }

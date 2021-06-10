@@ -26,7 +26,7 @@ public class Complex {
     private ComplexPlace complexPlace;
 
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "complex", fetch = FetchType.EAGER)
-    private List<ComplexDocument> documents;
+    private List<Documents> documents;
 
     @ManyToOne
     @JoinColumn(name = "network_id")

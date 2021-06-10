@@ -1,7 +1,7 @@
-DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS troles;
 
-CREATE TABLE roles (
-  id                    INT(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE troles (
+  id                    bigint NOT NULL AUTO_INCREMENT,
   name                  VARCHAR(50) DEFAULT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

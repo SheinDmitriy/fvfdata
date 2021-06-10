@@ -5,19 +5,14 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "complex_document")
+@Table(name = "tlink_type")
 @Data
-public class ComplexDocument {
-
+public class LinkType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "complex_id")
-    private Complex complex;
-
-    @Column(name = "path")
-    private String path;
+    @Column(name = "link_type")
+    private String link_type;
 }

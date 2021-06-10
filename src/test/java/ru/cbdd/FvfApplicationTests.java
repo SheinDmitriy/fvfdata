@@ -1,4 +1,4 @@
-package ru.cbdd.fvf;
+package ru.cbdd;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
